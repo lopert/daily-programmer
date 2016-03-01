@@ -37,6 +37,7 @@ def check_direction (board, player, opponent, target_x, target_y, dir_x, dir_y)
 	#ideally, I want to have a loop that checks for a series of opponent tokens in a direction and returns true if it hits an allied token
 	#so for this method, I'll need a starting coordinate and a direction
 
+	# the following is not very DRY, I need a way of +1'ing the directions regardless of their sign.
 	if board[dir_x][dir_y] == opponent # opponent token found, continue searching in this direction
 		if dir_x < 0 && dir_y < 0
 			return check_direction (board, player, opponent, target_x, target_y, dir_x - 1, dir_y - 1)
