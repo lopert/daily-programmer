@@ -51,43 +51,34 @@ end
 
 def check_direction (board, player, opponent, target_x, target_y, dir_x, dir_y)
 
-	# the following is not very DRY, 
-	# I need a way of +1'ing the directions regardless of their sign. Needs to also handle 0s.
-	# lots of repeated "target_z + dir_z"
+	current_x = target_x + dir_x
+	current_y = target_y + dir_y
 
-	if board[target_x + dir_x] && board[target_x + dir_x][target_y + dir_y]
-		if board[target_x + dir_x][target_y + dir_y] == opponent # opponent token found, continue searching in this direction
-			if dir_x < 0 && dir_y < 0
-				return check_direction(board, player, opponent, target_x, target_y, dir_x - 1, dir_y - 1)
-			elsif dir_x < 0 && dir_y > 0 
-				return check_direction(board, player, opponent, target_x, target_y, dir_x - 1, dir_y + 1)
-			elsif dir_x > 0 && dir_y < 0
-				return check_direction(board, player, opponent, target_x, target_y, dir_x + 1, dir_y - 1)
-			elsif dir_x > 0 && dir_y > 0
-				return check_direction(board, player, opponent, target_x, target_y, dir_x + 1, dir_y + 1)
-			elsif dir_x == 0 && dir_y > 0
-				return check_direction(board, player, opponent, target_x, target_y, dir_x, dir_y + 1)
-			elsif dir_x == 0 && dir_y < 0
-				return check_direction(board, player, opponent, target_x, target_y, dir_x, dir_y - 1)
-			elsif dir_x > 0 && dir_y == 0
-				return check_direction(board, player, opponent, target_x, target_y, dir_x + 1, dir_y)
-			elsif dir_x < 0 && dir_y == 0
-				return check_direction(board, player, opponent, target_x, target_y, dir_x - 1, dir_y)
-			end
-		elsif board[target_x + dir_x][target_y + dir_y] == player # found our token
+	if board[current_x] && board[current_x][current_y] # nil check
+		if board[current_x][current_y] == opponent # opponent token found, continue searching in this direction
+			return check_direction(board, player, opponent, target_x, target_y, next_dir(dir_x), next_dir(dir_y))
+		elsif board[current_x][current_y] == player # found our token
 			if dir_x > 1 || dir_y > 1 || dir_x < -1 || dir_y < -1 # we are NOT adjacent to the initial position, valid!
 				#puts "Found legal move for " + player + " at x:" + target_x.to_s + " y:" + target_y.to_s + " from: " + dir_x.to_s + " " + dir_y.to_s
 				return true
 			else # we ARE adjacent to our token, which is not a valid move
 				return false
 			end
-		else # last case is finding another blank space, invalid.
-			# This also covers the out of bounds issue according to http://stackoverflow.com/questions/22647254/ruby-arrays-bounds-and-raising-exceptions
-			# because we'll just return false if we get a nil, need to test to make sure ;)
+		else # last case is finding another blank space, invalid. also, board[x][y] nil catcher
 			return false
 		end
-	else # another out of bounds nil catcher
+	else # board[x] nil catcher
 		return false
+	end
+end
+
+def next_dir(dir)
+	if dir < 0
+		return dir - 1
+	elsif dir > 0
+		return dir + 1
+	else
+		return 0
 	end
 end
 
