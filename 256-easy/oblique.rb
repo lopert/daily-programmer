@@ -8,10 +8,8 @@ def oblique (matrix_as_string)
 		row = []
 
 		while i > -1
-			unless matrix[j].nil?
-				unless matrix[i].nil?
-					row.push(matrix[j][i])
-				end
+			if j < matrix.length && i < matrix[j].length
+				row.push(matrix[j][i])
 			end			
 			i -= 1
 			j += 1
@@ -44,7 +42,21 @@ oblique("1 2 3
 4 5 6
 7 8 9")
 
-puts ""
+puts "-----"
+
+oblique("1 2
+3 4
+5 6
+7 8
+9 10
+11 12")
+
+puts "-----"
+
+oblique("1 2 3
+4 5 6")
+
+puts "-----"
 
 oblique("0 1 2 3 4 5
 6 7 8 9 10 11
@@ -52,3 +64,17 @@ oblique("0 1 2 3 4 5
 18 19 20 21 22 23
 24 25 26 27 28 29
 30 31 32 33 34 35")
+
+puts "-----"
+
+deoblique("0
+1 6
+2 7 12
+3 8 13 18
+4 9 14 19 24
+5 10 15 20 25 30
+11 16 21 26 31
+17 22 27 32
+23 28 33
+29 34
+35")
