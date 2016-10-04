@@ -1,7 +1,7 @@
 # https://www.reddit.com/r/dailyprogrammer/comments/55nior/20161003_challenge_286_easy_reverse_factorial/    
 
-def rev_fact(number)
-	output(number, logic(number))
+def rev_fact(input)
+	output(input, logic(input))
 end    
 
 def logic(number, divider=1)
@@ -16,11 +16,11 @@ def logic(number, divider=1)
 	end
 end    
 
-def output(number, result)
+def output(input, result)
 	if result == -1
-		puts "#{number} NONE"
+		puts "#{input} NONE"
 	else
-		puts "#{number} = #{result}!"
+		puts "#{input} = #{result}!"
 	end
 end    
 
