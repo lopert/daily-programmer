@@ -18,9 +18,9 @@ end
 
 def output(number, result)
 	if result == -1
-		puts number.to_s + " NONE"
+		puts "#{number} NONE"
 	else
-		puts number.to_s + " = " + result.to_s + "!"
+		puts "#{number} = #{result}!"
 	end
 end    
 
