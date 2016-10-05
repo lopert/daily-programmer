@@ -5,13 +5,13 @@ def reverse_factorial(input)
 end    
 
 def logic(number, divider=1.0)
-	nd = number/divider 
+	nd = number/divider
 
 	if nd == 1
 		return divider.to_i
 	elsif nd == 0
 		return -1
-	elsif nd % 1 == 0
+	elsif nd % 1 != 0
 		return -1
 	else
 		logic(nd, divider+1)
