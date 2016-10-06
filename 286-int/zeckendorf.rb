@@ -27,14 +27,14 @@ def logic(input, fib_list)
 	result = []
 	i = -1
 
-	while (0 < input)
+	while (input > 0)
 
 		if (fib_list[i] <= input)
 			result.push(fib_list[i])
 			input = input - fib_list[i]
-			i = i - 2
+			i -= 2
 		else
-			i = i - 1
+			i -= 1
 		end
 	end
 
@@ -45,10 +45,10 @@ def output(input, result)
 	puts "#{input} = " + result.join(" + ")
 end
 
-zeckendorf(5)
-zeckendorf(100)
-zeckendorf(120)
-zeckendorf(34)
-zeckendorf(88)
-zeckendorf(90)
-zeckendorf(320)
+zeckendorf(5)		# 5 = 5
+zeckendorf(100)		# 100 = 89 + 8 + 3
+zeckendorf(120)		# 120 = 89 + 21 + 8 + 2
+zeckendorf(34)		# 34 = 34
+zeckendorf(88)		# 88 = 55 + 21 + 8 + 3 + 1
+zeckendorf(90)		# 90 = 89 + 1
+zeckendorf(320)		# 320 = 233 + 55 + 21 + 8 + 3
