@@ -14,24 +14,24 @@ end
 
 def fib(limit)
 	fibs = [1, 1]
+	fib_next = 0
 
-	while (fibs[-1] < limit)
-		fibs.push(fibs[-1] + fibs[-2])
+	while (fib_next < limit)
+		fibs.push(fib_next)
+		fib_next = fibs[-1] + fibs[-2]
 	end
 
 	fibs
 end
 
 def logic(input, fib_list)
-
 	result = []
 	i = -1
 
-	while (input > 0)
-
+	while (input > 0 and fib_list[i])
 		if (fib_list[i] <= input)
 			result.push(fib_list[i])
-			input = input - fib_list[i]
+			input -= fib_list[i]
 			i -= 2
 		else
 			i -= 1
