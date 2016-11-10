@@ -8,13 +8,10 @@ def goldilocks(inputfile)
 	lines.each_with_index do |line, seat|
 		line_stats = line.split(" ").map(&:to_i)
 		#lower weight, higher tolerance
-		if ((goldi_stats[0] <= line_stats[0]) && (goldi_stats[1] >= line_stats[1]))
-			seats.push(seat+1)
-		end
+		seats.push(seat+1) if ((goldi_stats[0] <= line_stats[0]) && (goldi_stats[1] >= line_stats[1]))
 	end
 
 	puts seats.join(" ")
-
 end
 
 goldilocks("./sample_input.txt")
