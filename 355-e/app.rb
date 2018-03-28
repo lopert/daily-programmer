@@ -1,27 +1,34 @@
 def encrypt(input)
-  key, text = input.split()
-  encrypted = ""
-
-  for i in 0..text.length-1
-    e_char_ord = (text[i].ord + (key[i%key.length].ord - 97))
-    e_char_ord -= 26 if e_char_ord > 122
-    encrypted += e_char_ord.chr
-  end
-  puts encrypted
-
+  puts crypt(input,"encrypt")
 end
 
 def decrypt(input)
+  puts crypt(input,"decrypt")
+end
+
+def crypt(input, operation)
   key, text = input.split()
-  decrypted = ""
+  result = ""
 
   for i in 0..text.length-1
-    d_char_ord = (text[i].ord - (key[i%key.length].ord - 97))
-    d_char_ord += 26 if d_char_ord < 97
-    decrypted += d_char_ord.chr
+    text_ord = text[i].ord
+    key_ord = key[i%key.length].ord - 97
+    result_ord = ""
+
+    if operation == "encrypt"
+      result_ord = text_ord + key_ord
+      result_ord -= 26 if result_ord > 122
+    elsif operation == "decrypt"
+      result_ord = text_ord - key_ord
+      result_ord += 26 if result_ord < 97
+    end
+
+    result += result_ord.chr
+
   end
 
-  puts decrypted
+  result
+
 end
 
 encrypt("snitch thepackagehasbeendelivered")
