@@ -32,10 +32,11 @@ def crypt(input, operation)
 end
 
 encrypt("snitch thepackagehasbeendelivered")
+puts
 encrypt("bond theredfoxtrotsquietlyatmidnight")
 encrypt("train murderontheorientexpress")
 encrypt("garden themolessnuckintothegardenlastnight")
-
+puts
 decrypt("cloak klatrgafedvtssdwywcyty")
 decrypt("python pjphmfamhrcaifxifvvfmzwqtmyswst")
 decrypt("moore rcfpsgfspiecbcc")
