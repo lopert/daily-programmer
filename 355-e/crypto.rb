@@ -1,11 +1,11 @@
 # https://www.reddit.com/r/dailyprogrammer/comments/879u8b/20180326_challenge_355_easy_alphabet_cipher/
 class Crypto
   def encrypt(input)
-    puts crypt(input,"encrypt")
+    crypt(input,"encrypt")
   end
 
   def decrypt(input)
-    puts crypt(input,"decrypt")
+    crypt(input,"decrypt")
   end
 
   def crypt(input, operation)
@@ -34,14 +34,3 @@ class Crypto
   end
 
 end
-
-crypto = Crypto.new
-crypto.encrypt("snitch thepackagehasbeendelivered")
-puts
-crypto.encrypt("bond theredfoxtrotsquietlyatmidnight")
-crypto.encrypt("train murderontheorientexpress")
-crypto.encrypt("garden themolessnuckintothegardenlastnight")
-puts
-crypto.decrypt("cloak klatrgafedvtssdwywcyty")
-crypto.decrypt("python pjphmfamhrcaifxifvvfmzwqtmyswst")
-crypto.decrypt("moore rcfpsgfspiecbcc")
