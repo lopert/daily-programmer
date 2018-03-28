@@ -3,17 +3,21 @@ require "test/unit"
 
 class TestCrypto < Test::Unit::TestCase
 
+  def setup
+    @Crypto = Crypto.new
+  end
+
   def test_encrypt
-    assert_equal(Crypto.new.encrypt("snitch thepackagehasbeendelivered"), "lumicjcnoxjhkomxpkwyqogywq")
-    assert_equal(Crypto.new.encrypt("bond theredfoxtrotsquietlyatmidnight"), "uvrufrsryherugdxjsgozogpjralhvg")
-    assert_equal(Crypto.new.encrypt("train murderontheorientexpress"), "flrlrkfnbuxfrqrgkefckvsa")
-    assert_equal(Crypto.new.encrypt("garden themolessnuckintothegardenlastnight"), "zhvpsyksjqypqiewsgnexdvqkncdwgtixkx")
+    assert_equal(@Crypto.encrypt("snitch thepackagehasbeendelivered"), "lumicjcnoxjhkomxpkwyqogywq")
+    assert_equal(@Crypto.encrypt("bond theredfoxtrotsquietlyatmidnight"), "uvrufrsryherugdxjsgozogpjralhvg")
+    assert_equal(@Crypto.encrypt("train murderontheorientexpress"), "flrlrkfnbuxfrqrgkefckvsa")
+    assert_equal(@Crypto.encrypt("garden themolessnuckintothegardenlastnight"), "zhvpsyksjqypqiewsgnexdvqkncdwgtixkx")
   end
 
   def test_decrypt
-    assert_equal(Crypto.new.decrypt("cloak klatrgafedvtssdwywcyty"), "iamtheprettiestunicorn")
-    assert_equal(Crypto.new.decrypt("python pjphmfamhrcaifxifvvfmzwqtmyswst"), "alwayslookonthebrightsideoflife")
-    assert_equal(Crypto.new.decrypt("moore rcfpsgfspiecbcc"), "foryoureyesonly")
+    assert_equal(@Crypto.decrypt("cloak klatrgafedvtssdwywcyty"), "iamtheprettiestunicorn")
+    assert_equal(@Crypto.decrypt("python pjphmfamhrcaifxifvvfmzwqtmyswst"), "alwayslookonthebrightsideoflife")
+    assert_equal(@Crypto.decrypt("moore rcfpsgfspiecbcc"), "foryoureyesonly")
   end
 
 end
