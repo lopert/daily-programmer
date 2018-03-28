@@ -1,7 +1,5 @@
 def encrypt(input)
-  key = input.split()[0]
-  text = input.split()[1]
-
+  key, text = input.split()
   encrypted = ""
 
   for i in 0..text.length-1
@@ -14,8 +12,7 @@ def encrypt(input)
 end
 
 def decrypt(input)
-  key = input.split()[0]
-  text = input.split()[1]
+  key, text = input.split()
   decrypted = ""
 
   for i in 0..text.length-1
